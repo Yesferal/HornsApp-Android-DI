@@ -2,7 +2,7 @@
 Hada is whole Kotlin container, which you can use very simple on JVM or Android. You can create an only instance for your app and manage all your dependencies.   
 
 ## Getting Started
-In case of Android, you can create an instance of Container in your applications class.
+In case of Android, you can create an instance of Container in your Application class.
 
 ```
 class MyApp: Application() {
@@ -10,7 +10,11 @@ class MyApp: Application() {
 }
 ```
 
-Then, you could used in entire app.
+Then, you could used it in any Activity:
+
+```
+val container = (application as MyApp).container
+```
 
 ## How to use: Register dependency
  Some code is better than words, so to register any dependency:
