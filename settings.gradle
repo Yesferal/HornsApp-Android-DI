@@ -1,0 +1,2 @@
+include ':app', ':hada'
+rootProject.name='HadaDemo'

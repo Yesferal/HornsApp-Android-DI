@@ -1,0 +1,49 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'com.novoda.bintray-release'
+
+//Step II: Add the below publish details
+publish {
+
+    def groupProjectID = 'com.yesferal.hornsapp'
+    def artifactProjectID = 'hada'
+    def publishVersionID = '0.1.0'
+
+    userOrg = 'hornsapp'
+    repoName = 'hada'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Kotlin library to manage dependency accessing.'
+    website = 'https://bitbucket.org/yesferal/hornsapp-hada-demo/'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+buildscript {
+    ext.kotlin_version = '1.3.61'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
