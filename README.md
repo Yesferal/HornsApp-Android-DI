@@ -55,7 +55,7 @@ val container = (application as MyApp).container
  To resolve any dependency you only need:
 
  ```
- private val actionListener: MainContract.ActionListener = container.resolve()
+ private val mainRepository: MainRepository = container.resolve()
  ```
 
  ## Demo Projects
