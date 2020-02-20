@@ -7,15 +7,15 @@ publish {
 
     def groupProjectID = 'com.yesferal.hornsapp'
     def artifactProjectID = 'hada'
-    def publishVersionID = '0.1.0'
+    def publishVersionID = '0.2.0'
 
     userOrg = 'hornsapp'
     repoName = 'hada'
     groupId = groupProjectID
     artifactId = artifactProjectID
     publishVersion = publishVersionID
-    desc = 'Kotlin library to manage dependency accessing.'
-    website = 'https://bitbucket.org/yesferal/hornsapp-hada-demo/'
+    desc = 'Kotlin container to manage dependency accessing.'
+    website = 'https://github.com/Yesferal/Hada'
 }
 
 dependencies {
