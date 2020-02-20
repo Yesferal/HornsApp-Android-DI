@@ -2,6 +2,12 @@
 Hada is whole Kotlin container, which you can use very simple on JVM or Android. You can create an only instance for your app and manage all your dependencies.   
 
 ## Getting Started
+In the app gradle add the dependency:
+
+```
+implementation 'com.yesferal.hornsapp:hada:0.2.0'
+```
+
 In case of Android, you can create an instance of Container in your Application class.
 
 ```
