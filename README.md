@@ -5,7 +5,7 @@ Hada is whole Kotlin container, which you can use very simple on JVM or Android.
 In the app gradle add the dependency:
 
 ```
-implementation 'com.yesferal.hornsapp:hada:0.2.0'
+implementation 'com.yesferal.hornsapp:hada:1.0.1'
 ```
 
 Then, you should instance Hada Container in your main class, so any class cloud access from anywhere of your project.
@@ -30,7 +30,7 @@ val container = (application as MyApp).container
 ```
 
 ## How to use: Register dependency
- Some code is better than words, so to register any dependency:
+ Some code is better than words, so, to register any dependency:
 
  ```
  container register Factory<String> { "Hada Container: First Option !" }
