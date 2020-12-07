@@ -3,7 +3,14 @@ package com.yesferal.hornsapp.hada.container
 import com.yesferal.hornsapp.hada.dependency.Dependency
 import java.lang.Exception
 
-class Hada: Container {
+/**
+ * Hada is the basic implementation of Container.
+ *
+ * In Hada, you can register any class that implement Dependency.
+ * In that moment you can register Singleton and Factory dependencies
+ * in any class that implement the Container interface.
+ */
+class Hada: Container() {
     private val dependencies: HashMap<Class<*>, Dependency<*>> = hashMapOf()
 
     override fun <T> register(clazz: Class<T>, dependency: Dependency<T>) {

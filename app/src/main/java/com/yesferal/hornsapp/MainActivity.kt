@@ -2,7 +2,6 @@ package com.yesferal.hornsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.yesferal.hornsapp.hada.container.resolve
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {

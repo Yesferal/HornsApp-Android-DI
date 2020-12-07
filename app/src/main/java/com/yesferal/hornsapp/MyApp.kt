@@ -3,8 +3,6 @@ package com.yesferal.hornsapp
 import android.app.Application
 import com.yesferal.hornsapp.hada.container.Container
 import com.yesferal.hornsapp.hada.container.Hada
-import com.yesferal.hornsapp.hada.container.register
-import com.yesferal.hornsapp.hada.container.resolve
 import com.yesferal.hornsapp.hada.dependency.Factory
 import com.yesferal.hornsapp.hada.dependency.Singleton
 
