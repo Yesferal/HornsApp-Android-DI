@@ -41,7 +41,7 @@ dependencies {
     implementation project(':hada')
 
     // Second Option
-    //implementation 'com.yesferal.hornsapp:hada:0.2.0'
+    //implementation 'com.yesferal.hornsapp:hada:1.0.3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
