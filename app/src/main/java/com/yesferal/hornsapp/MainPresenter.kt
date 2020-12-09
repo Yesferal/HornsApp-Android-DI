@@ -8,6 +8,9 @@ class MainPresenter(private val mainRepository: MainRepository): MainContract.Ac
     }
 
     override fun onCreate() {
-        mView?.show(message = mainRepository.getMessage())
+        mView?.show(
+            title = mainRepository.getMessage(),
+            description = mainRepository.getDescription()
+        )
     }
 }

@@ -7,36 +7,36 @@ import com.yesferal.hornsapp.hada.dependency.Factory
 import com.yesferal.hornsapp.hada.dependency.Singleton
 
 class MyApp: Application() {
+    /**
+     * Initialize the Container for the app
+     * in the Application
+     * so you can use it in any Activity
+     */
     val container: Container = Hada()
 
     override fun onCreate() {
         super.onCreate()
 
-        /**
-         * You could use any of this two options
-         */
-        firstOptionToInitMainModule()
+        initBaseModule()
     }
 
-    private fun firstOptionToInitMainModule() {
-        container register Factory<String> { "Hada Container: First Option !" }
+    /**
+     * Here we initialize the dependencies for the entire app
+     * in the Base Module
+     */
+    private fun initBaseModule() {
+        container register Factory<String>(tag = "Title") { "Title: Hada Container" }
+        container register Factory<String>(tag = "Description") { "Description: This is a demo app, which implement Hada Container. This strings are injected by Hada using a Tag, in order to Hada know which one to use in each case." }
+
         container register Singleton<MainRepository> {
-            MainRepository(container.resolve())
+            MainRepository(
+                message = container.resolve(tag = "Title"),
+                description = container.resolve(tag = "Description")
+            )
         }
-        container register Factory<MainContract.ActionListener> {
-            MainPresenter(container.resolve())
-        }
-    }
 
-    private fun secondOptionToInitMainModule() {
-        container.register(String::class.java, Singleton {
-            "Hada Container: Second Option !"
-        })
-        container.register(MainRepository::class.java, Singleton {
-            MainRepository(container.resolve())
-        })
-        container.register(MainContract.ActionListener::class.java, Factory {
-            MainPresenter(container.resolve())
-        })
+        container register Factory<MainContract.ActionListener> {
+            MainPresenter(mainRepository = container.resolve())
+        }
     }
 }

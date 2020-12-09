@@ -7,6 +7,6 @@ interface MainContract {
     }
 
     interface View {
-        fun show(message: String)
+        fun show(title: String, description: String)
     }
 }

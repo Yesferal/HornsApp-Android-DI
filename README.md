@@ -5,7 +5,7 @@ Hada is whole Kotlin container, which you can use very simple on JVM or Android.
 In the app gradle add the dependency:
 
 ```
-implementation 'com.yesferal.hornsapp:hada:1.0.1'
+implementation 'com.yesferal.hornsapp:hada:1.0.3'
 ```
 
 Then, you should instance Hada Container in your main class, so any class cloud access from anywhere of your project.
@@ -29,11 +29,12 @@ Then, you could used it in any Activity:
 val container = (application as MyApp).container
 ```
 
-## How to use: Register dependency
- Some code is better than words, so, to register any dependency:
+## How to use: Register dependency without Tag
+ Some code is better than words, so, to register any dependency you only need:
 
  ```
- container register Factory<String> { "Hada Container: First Option !" }
+ container register Factory<String> { "Message: Hada Container is our first option !" }
+
  container register Singleton<MainRepository> {
     MainRepository(container.resolve())
  }
@@ -43,26 +44,37 @@ val container = (application as MyApp).container
  }
  ```
 
- or
+ ## How to use: Register dependency using Tag
+ To register a dependency using Tag you need to define it as a unique string:
 
  ```
- container.register(String::class.java, Singleton {
-    "Hada Container: Second Option !"
- })
- container.register(MainRepository::class.java, Singleton {
-    MainRepository(container.resolve())
- })
+ container register Factory<String>(tag = "Title") { "Title: Hada Container" }
+ container register Factory<String>(tag = "Description") { "Description: This is a demo app, which implement Hada Container. This strings are injected by Hada using a Tag, in order to Hada know which one to use in each case." }
 
- class MainRepository(private val message: String) {
-    fun getMessage() = message
+ container register Singleton<MainRepository> {
+     MainRepository(
+         message = container.resolve(tag = "Title"),
+         description = container.resolve(tag = "Description")
+     )
+ }
+
+ container register Factory<MainContract.ActionListener> {
+     MainPresenter(mainRepository = container.resolve())
  }
  ```
 
- ## How to use: Resolve dependency
+ ## How to use: Resolve dependency without Tag
  To resolve any dependency you only need:
 
  ```
  private val mainRepository: MainRepository = container.resolve()
+ ```
+
+ ## How to use: Resolve dependency using Tag
+ To resolve a dependency using a Tag you need to specify the unique tag that you used to register it:
+ ```
+ val message: String = container.resolve(tag = "Title")
+ val description: String = container.resolve(tag = "Description")
  ```
 
  ## Demo Projects

@@ -1,6 +1,8 @@
 package com.yesferal.hornsapp.hada.container
 
 import com.yesferal.hornsapp.hada.dependency.Dependency
+import com.yesferal.hornsapp.hada.exception.DependencyNotFoundException
+import com.yesferal.hornsapp.hada.exception.DependencyRegisteredTwiceException
 
 /**
  * Hada is the basic implementation of Container.
@@ -10,18 +12,18 @@ import com.yesferal.hornsapp.hada.dependency.Dependency
  * in any class that implement the Container interface.
  */
 class Hada: Container() {
-    private val dependencies: HashMap<Class<*>, Dependency<*>> = hashMapOf()
+    private val dependencies: HashMap<String, Dependency<*>> = hashMapOf()
 
-    override fun <T> register(clazz: Class<T>, dependency: Dependency<T>) {
-        if(dependencies.containsKey(clazz)) {
-            throw DependencyRegisteredTwiceException(className = clazz.toString())
+    override fun <T> _register(className: String, dependency: Dependency<T>) {
+        if(dependencies.containsKey(className)) {
+            throw DependencyRegisteredTwiceException(className)
         }
 
-        dependencies[clazz] = dependency
+        dependencies[className] = dependency
     }
 
-    override fun <T> resolve(clazz: Class<T>): Any {
-        return dependencies[clazz]?.resolve()
-            ?: throw DependencyNotFoundException(className = clazz.toString())
+    override fun _resolve(className: String): Any {
+        return dependencies[className]?.resolve()
+            ?: throw DependencyNotFoundException(className)
     }
 }

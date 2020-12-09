@@ -6,7 +6,7 @@ publish {
 
     def groupProjectID = 'com.yesferal.hornsapp'
     def artifactProjectID = 'hada'
-    def publishVersionID = '1.0.2'
+    def publishVersionID = '1.0.3'
 
     userOrg = 'hornsapp'
     repoName = 'hada'

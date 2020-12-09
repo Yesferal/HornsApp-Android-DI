@@ -10,12 +10,12 @@ import com.yesferal.hornsapp.hada.dependency.Dependency
  * but you can create your own and override it as you need.
  */
 abstract class Container {
-    abstract fun <T> register(clazz: Class<T>, dependency: Dependency<T>)
-    abstract fun <T> resolve(clazz: Class<T>): Any
+    abstract fun <T> _register(className: String, dependency: Dependency<T>)
+    abstract fun _resolve(className: String): Any
 
     inline infix fun <reified T> register(
         dependency: Dependency<T>
-    ) = register(T::class.java, dependency)
+    ) = _register("${T::class.java}.${dependency.tag}", dependency)
 
-    inline fun <reified T> resolve(): T = resolve(T::class.java) as T
+    inline fun <reified T> resolve(tag: String = ""): T = _resolve("${T::class.java}.${tag}") as T
 }

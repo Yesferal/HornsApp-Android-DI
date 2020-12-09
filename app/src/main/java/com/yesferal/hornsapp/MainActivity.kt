@@ -6,20 +6,27 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
 
-    private val actionListener by lazy {
-        getContainer().resolve<MainContract.ActionListener>()
+    private val container by lazy {
+        (application as MyApp).container
     }
 
-    private fun getContainer() = (application as MyApp).container
+    private val actionListener by lazy {
+        container.resolve<MainContract.ActionListener>()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         actionListener.bind(this)
         actionListener.onCreate()
     }
 
-    override fun show(message: String) {
-        textViewMessage.text = message
+    override fun show(
+        title: String,
+        description: String
+    ) {
+        textViewTitle.text = title
+        textViewDescription.text = description
     }
 }
