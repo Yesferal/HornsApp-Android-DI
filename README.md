@@ -1,21 +1,22 @@
 # HADA: HornsApp Dependency Accessing
-Hada is whole Kotlin container, which you can use very simple on JVM or Android. You can create an only instance for your app and manage all your dependencies.   
+Hada is a whole Kotlin container, which you can use very simple on JVM or Android.
+You can define all the instance that you will need in your app and manage them in a single place.
 
 ## Getting Started
-In the app gradle add the dependency:
+In the app gradle, you have to add the dependency:
 
 ```
 implementation 'com.yesferal.hornsapp:hada:1.0.3'
 ```
 
-Then, you should instance Hada Container in your main class, so any class cloud access from anywhere of your project.
+Then, you should instance Hada Container in your main class, so any class cloud access it without any problem.
 
 ```
 val container: Container = Hada()
 ```
 
 ### Android
-In case of Android, you can create an instance of Container in your Application class.
+In case of Android, you should create an instance of Hada in your Application class.
 
 ```
 class MyApp: Application() {
@@ -23,14 +24,14 @@ class MyApp: Application() {
 }
 ```
 
-Then, you could used it in any Activity:
+So, you can use it in any Activity:
 
 ```
 val container = (application as MyApp).container
 ```
 
 ## How to use: Register dependency without Tag
- Some code is better than words, so, to register any dependency you only need:
+ Some code is better than words, to register any dependency you just need:
 
  ```
  container register Factory<String> { "Message: Hada Container is our first option !" }
@@ -45,7 +46,7 @@ val container = (application as MyApp).container
  ```
 
  ## How to use: Register dependency using Tag
- To register a dependency using Tag you need to define it as a unique string:
+ To register a dependency using a Tag you just need to define it as a unique string:
 
  ```
  container register Factory<String>(tag = "Title") { "Title: Hada Container" }
@@ -64,14 +65,14 @@ val container = (application as MyApp).container
  ```
 
  ## How to use: Resolve dependency without Tag
- To resolve any dependency you only need:
+ To resolve any dependency you just need:
 
  ```
  private val mainRepository: MainRepository = container.resolve()
  ```
 
  ## How to use: Resolve dependency using Tag
- To resolve a dependency using a Tag you need to specify the unique tag that you used to register it:
+ To resolve a dependency using a Tag you just need to specify the unique tag that you used to register it:
  ```
  val message: String = container.resolve(tag = "Title")
  val description: String = container.resolve(tag = "Description")
