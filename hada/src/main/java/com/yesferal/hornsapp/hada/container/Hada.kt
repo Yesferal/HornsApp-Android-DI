@@ -1,7 +1,6 @@
 package com.yesferal.hornsapp.hada.container
 
 import com.yesferal.hornsapp.hada.dependency.Dependency
-import java.lang.Exception
 
 /**
  * Hada is the basic implementation of Container.
@@ -14,11 +13,15 @@ class Hada: Container() {
     private val dependencies: HashMap<Class<*>, Dependency<*>> = hashMapOf()
 
     override fun <T> register(clazz: Class<T>, dependency: Dependency<T>) {
+        if(dependencies.containsKey(clazz)) {
+            throw DependencyRegisteredTwiceException(className = clazz.toString())
+        }
+
         dependencies[clazz] = dependency
     }
 
     override fun <T> resolve(clazz: Class<T>): Any {
         return dependencies[clazz]?.resolve()
-            ?: throw Exception("${this::class.java} could not resolve instance of [${clazz}]")
+            ?: throw DependencyNotFoundException(className = clazz.toString())
     }
 }

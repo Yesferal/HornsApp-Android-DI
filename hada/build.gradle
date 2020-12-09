@@ -6,7 +6,7 @@ publish {
 
     def groupProjectID = 'com.yesferal.hornsapp'
     def artifactProjectID = 'hada'
-    def publishVersionID = '1.0.1'
+    def publishVersionID = '1.0.2'
 
     userOrg = 'hornsapp'
     repoName = 'hada'
@@ -20,10 +20,10 @@ publish {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
 buildscript {
     ext.kotlin_version = '1.4.20'
     repositories {
