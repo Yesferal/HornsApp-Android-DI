@@ -6,7 +6,7 @@ You can define all the instance that you will need in your app and manage them i
 In the app gradle, you have to add the dependency:
 
 ```kotlin
-implementation 'com.yesferal.hornsapp:hada:1.0.4'
+implementation 'com.yesferal.hornsapp:hada:1.0.5'
 ```
 
 Then, you should instance Hada Container in your main class, so any class could access it without any problem.
@@ -75,6 +75,21 @@ val container = (application as MyApp).container
  ```kotlin
  val message: String = container.resolve(tag = "Title")
  val description: String = container.resolve(tag = "Description")
+ ```
+
+ ## How to use: Register dependency with Parameters
+ To register a dependency with parameters you just need to define the parameter structure as `name: Type`.
+ You can use this feature if you have dependencies that need some parameters obtained at runtime:
+ ```kotlin
+ container register Factory(tag = "Parameter") { (string: String) ->
+     string
+ }
+ ```
+
+ ## How to use: Resolve dependency with parameters
+ To resolve a dependency with parameters you just need to specify them inside the `Parameters`'s constructor:
+ ```kotlin
+ val description: String = container.resolve(params = Parameters("Description: Inserting value as Parameter"))
  ```
 
  Now you're ready to include & use HADA library into your project!

@@ -1,5 +1,7 @@
 package com.yesferal.hornsapp.hada.dependency
 
+import com.yesferal.hornsapp.hada.parameter.Parameters
+
 /**
  * Singleton is the basic class that extend of Dependency.
  *
@@ -8,10 +10,12 @@ package com.yesferal.hornsapp.hada.dependency
  */
 class Singleton<T>(
     tag: String = "",
-    value: () -> Any
+    value: (Parameters) -> T
 ): Dependency<T>(tag, value) {
-    private val instance by lazy { value() }
-    override fun resolve(): Any {
+    private lateinit var params: Parameters
+    private val instance by lazy { value(params) }
+    override fun resolve(params: Parameters): T {
+        this.params = params
         return instance
     }
 }

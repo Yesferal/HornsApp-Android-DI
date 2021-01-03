@@ -1,6 +1,7 @@
 package com.yesferal.hornsapp.hada.container
 
 import com.yesferal.hornsapp.hada.dependency.Dependency
+import com.yesferal.hornsapp.hada.parameter.Parameters
 
 /**
  * The Container is the main abstract class.
@@ -11,11 +12,14 @@ import com.yesferal.hornsapp.hada.dependency.Dependency
  */
 abstract class Container {
     abstract fun <T> _register(className: String, dependency: Dependency<T>)
-    abstract fun _resolve(className: String): Any
+    abstract fun _resolve(className: String, params: Parameters): Any
 
     inline infix fun <reified T> register(
         dependency: Dependency<T>
     ) = _register("${T::class.java}.${dependency.tag}", dependency)
 
-    inline fun <reified T> resolve(tag: String = ""): T = _resolve("${T::class.java}.${tag}") as T
+    inline fun <reified T> resolve(
+        tag: String = "",
+        params: Parameters = Parameters(null, null)
+    ): T = _resolve("${T::class.java}.${tag}", params) as T
 }

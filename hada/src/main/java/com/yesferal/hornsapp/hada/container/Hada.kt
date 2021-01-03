@@ -3,6 +3,7 @@ package com.yesferal.hornsapp.hada.container
 import com.yesferal.hornsapp.hada.dependency.Dependency
 import com.yesferal.hornsapp.hada.exception.DependencyNotFoundException
 import com.yesferal.hornsapp.hada.exception.DependencyRegisteredTwiceException
+import com.yesferal.hornsapp.hada.parameter.Parameters
 
 /**
  * Hada is the basic implementation of Container.
@@ -22,8 +23,8 @@ class Hada: Container() {
         dependencies[className] = dependency
     }
 
-    override fun _resolve(className: String): Any {
-        return dependencies[className]?.resolve()
+    override fun _resolve(className: String, params: Parameters): Any {
+        return dependencies[className]?.resolve(params)
             ?: throw DependencyNotFoundException(className)
     }
 }

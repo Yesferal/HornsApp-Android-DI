@@ -1,5 +1,7 @@
 package com.yesferal.hornsapp.hada.dependency
 
+import com.yesferal.hornsapp.hada.parameter.Parameters
+
 /**
  * Factory is the basic class that extend of Dependency.
  *
@@ -8,9 +10,9 @@ package com.yesferal.hornsapp.hada.dependency
  */
 class Factory<T>(
     tag: String = "",
-    value: () -> Any
+    value: (Parameters) -> T
 ): Dependency<T>(tag, value) {
-    override fun resolve(): Any {
-        return value()
+    override fun resolve(params: Parameters): T {
+        return value(params)
     }
 }

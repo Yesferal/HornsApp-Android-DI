@@ -1,5 +1,7 @@
 package com.yesferal.hornsapp.hada.dependency
 
+import com.yesferal.hornsapp.hada.parameter.Parameters
+
 /**
  * Dependency is the class that we necessary use in any Container implementation.
  *
@@ -8,7 +10,7 @@ package com.yesferal.hornsapp.hada.dependency
  */
 abstract class Dependency<T>(
     val tag: String,
-    val value: () -> Any
+    val value: (Parameters) -> T
 ) {
-    abstract fun resolve(): Any
+    abstract fun resolve(params: Parameters): T
 }

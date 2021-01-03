@@ -9,3 +9,8 @@ class DependencyRegisteredTwiceException(
 class DependencyNotFoundException(
     className: String
 ) : Exception("The Hada Container could not resolve instance of [${className}]")
+
+class ParameterNotFoundException(
+    index: Int,
+    className: String
+) : Exception(" Parameter #${index} [${className}] not found")
