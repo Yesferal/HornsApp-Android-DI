@@ -2,16 +2,13 @@ package com.yesferal.hornsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.TextView
+import com.yesferal.hornsapp.hada_android.HadaAwareness
 
-class MainActivity : AppCompatActivity(), MainContract.View {
-
-    private val container by lazy {
-        (application as MyApp).container
-    }
+class MainActivity : AppCompatActivity(), MainContract.View, HadaAwareness {
 
     private val actionListener by lazy {
-        container.resolve<MainContract.ActionListener>()
+        hada().resolve<MainContract.ActionListener>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +23,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         title: String,
         description: String
     ) {
-        textViewTitle.text = title
-        textViewDescription.text = description
+        findViewById<TextView>(R.id.textViewTitle).text = title
+        findViewById<TextView>(R.id.textViewDescription).text = description
     }
 }

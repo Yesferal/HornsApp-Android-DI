@@ -6,14 +6,16 @@ import com.yesferal.hornsapp.hada.container.Hada
 import com.yesferal.hornsapp.hada.dependency.Factory
 import com.yesferal.hornsapp.hada.dependency.Singleton
 import com.yesferal.hornsapp.hada.parameter.Parameters
+import com.yesferal.hornsapp.hada_android.HadaApp
 
-class MyApp: Application() {
+class MyApp: Application(), HadaApp {
     /**
      * Initialize the Container for the app
      * in the Application
      * so you can use it in any Activity
      */
-    val container: Container = Hada()
+    override val container: Container = Hada()
+
     override fun onCreate() {
         super.onCreate()
 

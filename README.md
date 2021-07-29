@@ -1,13 +1,22 @@
+[![](https://jitpack.io/v/Yesferal/hada.svg)](https://jitpack.io/#Yesferal/hada)
 # HADA: HornsApp Dependency Accessing
 Hada is a whole Kotlin container, which you can use very simple on JVM or Android.
 You can define all the instance that you will need in your app and manage them in a single place.
 
 ## Getting Started
-In the app gradle, you have to add the dependency:
-
-```kotlin
-implementation 'com.yesferal.hornsapp:hada:1.0.5'
-```
+In your app gradle, you should add the repository:
+ ```kotlin
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+ ```
+ and the dependency:
+ ```kotlin
+ implementation 'com.github.Yesferal:hada:1.1.0'
+ ```
 
 Then, you should instance Hada Container in your main class, so any class could access it without any problem.
 
