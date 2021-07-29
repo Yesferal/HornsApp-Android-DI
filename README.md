@@ -15,7 +15,7 @@ allprojects {
  ```
  and the dependency:
  ```kotlin
- implementation 'com.github.Yesferal:hada:1.1.0'
+ implementation 'com.github.Yesferal:hada-android:1.1.0'
  ```
 
 Then, you should instance Hada Container in your main class, so any class could access it without any problem.
@@ -25,18 +25,25 @@ val container: Container = Hada()
 ```
 
 ### Android
-In case of Android, you should create an instance of Hada in your Application class.
+In case of Android, you should implement the interface HadaApp in your Application class.
 
 ```kotlin
-class MyApp: Application() {
-    val container: Container = Hada()
+class MyApp: Application(), HadaApp {
+    override val container: Container = Hada()
 }
 ```
 
-So, you can use it in any Activity:
+And then, implement the interface HadaAwareness in any Activity or Fragment:
 
 ```kotlin
-val container = (application as MyApp).container
+class MainActivity : AppCompatActivity(), HadaAwareness {
+    private val instance = hada().resolve<YourClass>()
+}
+```
+
+So, you can use Hada just calling hada() function:
+```kotlin
+private val instance = hada().resolve<YourClass>()
 ```
 
 ## How to use: Register a simple dependency

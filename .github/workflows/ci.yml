@@ -32,8 +32,8 @@ jobs:
 
       # Execute lint validation
       - name: Lint
-        run: ./gradlew :hada:lintDebug :hada-android:lintDebug
+        run: ./gradlew :hada-android:lintDebug
 
       # Execute unit tests
       - name: Unit Test
-        run: ./gradlew :hada:testDebugUnitTest
+        run: ./gradlew :hada:test
