@@ -40,25 +40,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.fragment:fragment-ktx:1.3.6"
 
-
-    // First Option
     api project(':hada')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-
-                groupId = 'com.yesferal.hornsapp'
-                artifactId = 'hada_android'
-                version = publishVersionID
-            }
-        }
-    }
 }

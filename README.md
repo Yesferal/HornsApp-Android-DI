@@ -15,7 +15,7 @@ allprojects {
  ```
  and the dependency:
  ```kotlin
- implementation 'com.github.Yesferal:hada-android:1.1.0'
+ implementation 'com.github.Yesferal:hada:1.1.0'
  ```
 
 Then, you should instance Hada Container in your main class, so any class could access it without any problem.

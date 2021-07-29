@@ -10,6 +10,7 @@ buildscript {
 plugins {
     id 'java-library'
     id 'kotlin'
+    id 'maven-publish'
 }
 
 dependencies {
@@ -32,5 +33,21 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+def publishVersionID = "1.1.1"
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.java
+
+                groupId = 'com.yesferal.hornsapp'
+                artifactId = 'hada'
+                version = publishVersionID
+            }
+        }
     }
 }
