@@ -1,2 +1,2 @@
-include ':app', ':hada', ':hada-android'
-rootProject.name='HadaDemo'
+include ':app', ':hadi-android'
+rootProject.name='HadiDemo'

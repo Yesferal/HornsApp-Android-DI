@@ -34,10 +34,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    implementation project(':hada-android')
-
-    implementation project(':hada')
-    //implementation 'com.github.Yesferal:hada:1.1.1'
+    implementation project(':hadi-android')
+    //implementation 'com.github.Yesferal:HornsApp-Android-DI:1.2.0'
+    implementation 'com.github.Yesferal:HornsApp-DI:1.2.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

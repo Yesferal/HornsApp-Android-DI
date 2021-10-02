@@ -3,12 +3,12 @@ package com.yesferal.hornsapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.yesferal.hornsapp.hada_android.HadaAwareness
+import com.yesferal.hornsapp.hadi_android.hadi
 
-class MainActivity : AppCompatActivity(), MainContract.View, HadaAwareness {
+class MainActivity : AppCompatActivity(), MainContract.View {
 
     private val actionListener by lazy {
-        hada().resolve<MainContract.ActionListener>()
+        hadi().resolve<MainContract.ActionListener>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
