@@ -15,8 +15,8 @@ allprojects {
  ```
  and the dependency:
  ```kotlin
- implementation 'com.github.Yesferal:HornsApp-DI:1.2.0'
- implementation 'com.github.Yesferal:HornsApp-Android-DI:1.2.0'
+ implementation 'com.github.Yesferal:HornsApp-DI:${version}'
+ implementation 'com.github.Yesferal:HornsApp-Android-DI:${version}'
  ```
 
 Then, you should instance Hadi Container in your main class, so any class could access it without any problem.
