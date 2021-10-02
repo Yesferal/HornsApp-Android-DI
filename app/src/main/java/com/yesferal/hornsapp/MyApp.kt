@@ -1,20 +1,20 @@
 package com.yesferal.hornsapp
 
 import android.app.Application
-import com.yesferal.hornsapp.hada.container.Container
-import com.yesferal.hornsapp.hada.container.Hada
-import com.yesferal.hornsapp.hada.dependency.Factory
-import com.yesferal.hornsapp.hada.dependency.Singleton
-import com.yesferal.hornsapp.hada.parameter.Parameters
-import com.yesferal.hornsapp.hada_android.HadaApp
+import com.yesferal.hornsapp.hadi.container.Container
+import com.yesferal.hornsapp.hadi.container.Hadi
+import com.yesferal.hornsapp.hadi.dependency.Factory
+import com.yesferal.hornsapp.hadi.dependency.Singleton
+import com.yesferal.hornsapp.hadi.parameter.Parameters
+import com.yesferal.hornsapp.hadi_android.HadiApp
 
-class MyApp: Application(), HadaApp {
+class MyApp: Application(), HadiApp {
     /**
      * Initialize the Container for the app
      * in the Application
      * so you can use it in any Activity
      */
-    override val container: Container = Hada()
+    override val container: Container = Hadi()
 
     override fun onCreate() {
         super.onCreate()
@@ -27,7 +27,7 @@ class MyApp: Application(), HadaApp {
      * in the Base Module
      */
     private fun initBaseModule() {
-        container register Factory(tag = "Title") { "Title: Hada Container" }
+        container register Factory(tag = "Title") { "Title: Hadi Container" }
 
         container register Factory { (string: String) ->
             string

@@ -28,12 +28,12 @@ jobs:
 
       # Execute clean build
       - name: Clean
-        run: ./gradlew :hada:clean :hada-android:clean
+        run: ./gradlew :hadi-android:clean
 
       # Execute lint validation
       - name: Lint
-        run: ./gradlew :hada-android:lintDebug
+        run: ./gradlew :hadi-android:lintDebug
 
       # Execute unit tests
       - name: Unit Test
-        run: ./gradlew :hada:test
+        run: ./gradlew :hadi-android:test

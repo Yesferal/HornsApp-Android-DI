@@ -1,6 +1,6 @@
-[![](https://jitpack.io/v/Yesferal/hada.svg)](https://jitpack.io/#Yesferal/hada)
-# HADA: HornsApp Dependency Accessing
-Hada is a whole Kotlin container, which you can use very simple on JVM or Android.
+[![](https://jitpack.io/v/Yesferal/HornsApp-Android-DI.svg)](https://jitpack.io/#Yesferal/HornsApp-Android-DI)
+# HADI: HornsApp Android Dependency Injection
+Hadi is a whole Kotlin container, which you can use very simple on JVM or Android.
 You can define all the instance that you will need in your app and manage them in a single place.
 
 ## Getting Started
@@ -15,35 +15,39 @@ allprojects {
  ```
  and the dependency:
  ```kotlin
- implementation 'com.github.Yesferal:hada:1.1.1'
+ implementation 'com.github.Yesferal:HornsApp-DI:1.2.0'
+ implementation 'com.github.Yesferal:HornsApp-Android-DI:1.2.0'
  ```
 
-Then, you should instance Hada Container in your main class, so any class could access it without any problem.
+Then, you should instance Hadi Container in your main class, so any class could access it without any problem.
 
 ```kotlin
-val container: Container = Hada()
+val container: Container = Hadi()
 ```
 
 ### Android
-In case of Android, you should create an instance of Hada in your Application class.
+In case of Android, you should implement HadiApp interface in your Application class.
 
  ```kotlin
- class MyApp: Application() {
-     val container: Container = Hada()
+ class MyApp: Application(), HadiApp {
+    override val container: Container = Hadi()
  }
  ```
 
- So, you can use it in any Activity:
+ So, you can use the kotlin extensions in any Activity or Fragment:
 
- ```kotlin
- val container = (application as MyApp).container
+```kotlin
+hadi().resolve<MainContract.ActionListener>()
 ```
+
+### Hadi: Kotlin Module
+You could check more about this module in its own [Github repository](https://github.com/Yesferal/HornsApp-DI).
 
 ## How to use: Register a simple dependency
  Some times the code is better than words, to register any dependency you just need:
 
  ```kotlin
- container register Factory<String> { "Message: Hada Container is our first option !" }
+ container register Factory<String> { "Message: Hadi Container is our first option !" }
 
  container register Singleton<MainRepository> {
     MainRepository(message = container.resolve())
@@ -64,8 +68,8 @@ In case of Android, you should create an instance of Hada in your Application cl
  ## How to use: Register dependency using Tag
  To register a dependency using a Tag you just need to define the tag as a string. You can use this feature if you have dependencies that implement the same class, for example String:
  ```kotlin
- container register Factory<String>(tag = "Title") { "Title: Hada Container" }
- container register Factory<String>(tag = "Description") { "Description: This is a demo app, which implement Hada Container. This strings are injected by Hada using a Tag, in order to Hada know which one to use in each case." }
+ container register Factory<String>(tag = "Title") { "Title: Hadi Container" }
+ container register Factory<String>(tag = "Description") { "Description: This is a demo app, which implement Hadi Container. This strings are injected by Hadi using a Tag, in order to Kadi know which one to use in each case." }
 
  container register Singleton<MainRepository> {
      MainRepository(
@@ -101,7 +105,7 @@ In case of Android, you should create an instance of Hada in your Application cl
  val description: String = container.resolve(params = Parameters("Description: Inserting value as Parameter"))
  ```
 
- Now you're ready to include & use HADA library into your project!
+ Now you're ready to include & use Hadi library into your project!
 
  ## Demo Projects
  In this Repository you have an Android Demo that explain how to use it.
